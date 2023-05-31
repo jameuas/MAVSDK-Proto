@@ -42,6 +42,8 @@ service TelemetryService {
     rpc SubscribeRawGps(SubscribeRawGpsRequest) returns(stream RawGpsResponse) {}
     // Subscribe to 'battery' updates.
     rpc SubscribeBattery(SubscribeBatteryRequest) returns(stream BatteryResponse) {}
+    // Subscribe to 'vehicle type' updates.
+    rpc SubscribeVehicleType(SubscribeVehicleTypeRequest) returns(stream VehicleTypeResponse) {}
     // Subscribe to 'flight mode' updates.
     rpc SubscribeFlightMode(SubscribeFlightModeRequest) returns(stream FlightModeResponse) {}
     // Subscribe to 'health' updates.
@@ -201,6 +203,11 @@ message RawGpsResponse {
 message SubscribeBatteryRequest {}
 message BatteryResponse {
     Battery battery = 1; // The next 'battery' state
+}
+
+message SubscribeVehicleTypeRequest {}
+message VehicleTypeResponse {
+    VehicleType vehicle_type = 1; // The next vehicle type
 }
 
 message SubscribeFlightModeRequest {}
@@ -569,6 +576,14 @@ message Battery {
     uint32 id = 3 [(mavsdk.options.default_value)="0"]; // Battery ID, for systems with multiple batteries
     float voltage_v = 1 [(mavsdk.options.default_value)="NaN"]; // Voltage in volts
     float remaining_percent = 2 [(mavsdk.options.default_value)="NaN"]; // Estimated battery remaining (range: 0.0 to 1.0)
+}
+
+// Vehicle type
+enum VehicleType {
+    VEHICLE_TYPE_UNKNOWN = 0; // Mode not known
+    VEHICLE_TYPE_FIXED_WING = 1; // Fixed wing aircraft
+    VEHICLE_TYPE_MULTIROTOR = 2; // Multirotor
+    VEHICLE_TYPE_VTOL = 3; // VTOL
 }
 
 /*
