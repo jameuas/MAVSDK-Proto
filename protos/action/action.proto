@@ -99,6 +99,21 @@ service ActionService {
      */
     rpc Hold(HoldRequest) returns(HoldResponse) {}
     /*
+     * Send command to change to Hold flight mode for dev-gcs.
+     */
+    rpc ModeTakeoff(ModeTakeoffRequest) returns(ModeTakeoffResponse) {}
+    rpc ModeHold(ModeHoldRequest) returns(ModeHoldResponse) {}
+    rpc ModeMission(ModeMissionRequest) returns(ModeMissionResponse) {}
+    rpc ModeReturnToLaunch(ModeReturnToLaunchRequest) returns(ModeReturnToLaunchResponse) {}
+    rpc ModeLand(ModeLandRequest) returns(ModeLandResponse) {}
+    rpc ModeOffboard(ModeOffboardRequest) returns(ModeOffboardResponse) {}
+    rpc ModeFollowMe(ModeFollowMeRequest) returns(ModeFollowMeResponse) {}
+    rpc ModeManual(ModeManualRequest) returns(ModeManualResponse) {}
+    rpc ModeAltitudeControl(ModeAltitudeControlRequest) returns(ModeAltitudeControlResponse) {}
+    rpc ModePositionControl(ModePositionControlRequest) returns(ModePositionControlResponse) {}
+    rpc ModeAcro(ModeAcroRequest) returns(ModeAcroResponse) {}
+    rpc ModeStabilized(ModeStabilizedRequest) returns(ModeStabilizedResponse) {}
+    /*
      * Send command to set the value of an actuator.
      */
     rpc SetActuator(SetActuatorRequest) returns(SetActuatorResponse) {}
@@ -229,6 +244,66 @@ message DoOrbitResponse {
 
 message HoldRequest {}
 message HoldResponse {
+    ActionResult action_result = 1;
+}
+
+message ModeTakeoffRequest {}
+message ModeTakeoffResponse {
+    ActionResult action_result = 1;
+}
+
+message ModeHoldRequest {}
+message ModeHoldResponse {
+    ActionResult action_result = 1;
+}
+
+message ModeMissionRequest {}
+message ModeMissionResponse {
+    ActionResult action_result = 1;
+}
+
+message ModeReturnToLaunchRequest {}
+message ModeReturnToLaunchResponse {
+    ActionResult action_result = 1;
+}
+
+message ModeLandRequest {}
+message ModeLandResponse {
+    ActionResult action_result = 1;
+}
+
+message ModeOffboardRequest {}
+message ModeOffboardResponse {
+    ActionResult action_result = 1;
+}
+
+message ModeFollowMeRequest {}
+message ModeFollowMeResponse {
+    ActionResult action_result = 1;
+}
+
+message ModeManualRequest {}
+message ModeManualResponse {
+    ActionResult action_result = 1;
+}
+
+message ModeAltitudeControlRequest {}
+message ModeAltitudeControlResponse {
+    ActionResult action_result = 1;
+}
+
+message ModePositionControlRequest {}
+message ModePositionControlResponse {
+    ActionResult action_result = 1;
+}
+
+message ModeAcroRequest {}
+message ModeAcroResponse {
+    ActionResult action_result = 1;
+}
+
+message ModeStabilizedRequest {}
+message ModeStabilizedResponse {
     ActionResult action_result = 1;
 }
 
